@@ -13,6 +13,7 @@ interface SocialItem {
   name: string;
   icon: React.ReactNode;
   color: string;
+  url: string;
 }
 
 const socialLinks: SocialItem[] = [
@@ -20,32 +21,40 @@ const socialLinks: SocialItem[] = [
     name: "Gmail",
     icon: <SiGmail className="text-xl" />,
     color: "#EA4335",
+    url: "mailto:your-email@gmail.com", // Update with your email
   },
   {
     name: "GitHub",
     icon: <FaGithub className="text-xl" />,
     color: "#fff",
+    url: "https://github.com/RuturajKhondre",
   },
   {
     name: "LinkedIn",
     icon: <FaLinkedin className="text-xl" />,
     color: "#0077B5",
+    url: "https://www.linkedin.com/in/ruturaj-khondre",
   },
   {
     name: "Instagram",
     icon: <FaInstagram className="text-xl" />,
     color: "#E4405F",
+    url: "https://www.instagram.com/", // Update with your Instagram username
   },
   {
     name: "X",
     icon: <RiTwitterXFill className="text-xl" />,
     color: "#fff",
+    url: "https://x.com/RuturajKhondre",
   },
 ];
 
-const SocialCard = ({ name, icon, color }: SocialItem) => {
+const SocialCard = ({ name, icon, color, url }: SocialItem) => {
   return (
-    <div
+    <a
+      href={url}
+      target="_blank"
+      rel="noopener noreferrer"
       className={cn(
         "flex items-center gap-4 px-4 py-3 rounded-lg cursor-pointer",
         "transition-all duration-200 ease-in-out hover:bg-gray-800/50",
@@ -63,7 +72,7 @@ const SocialCard = ({ name, icon, color }: SocialItem) => {
       <span className="text-base text-gray-300 group-hover:text-white transition-colors">
         {name}
       </span>
-    </div>
+    </a>
   );
 };
 

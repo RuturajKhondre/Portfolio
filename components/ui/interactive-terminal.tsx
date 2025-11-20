@@ -228,7 +228,6 @@ export function InteractiveTerminal({ className, onNavigate }: InteractiveTermin
               onChange={(e) => setCurrentInput(e.target.value)}
               onKeyDown={handleKeyDown}
               className="flex-1 bg-transparent outline-none text-white font-mono caret-green-400"
-              autoFocus
               spellCheck={false}
               autoComplete="off"
               suppressHydrationWarning

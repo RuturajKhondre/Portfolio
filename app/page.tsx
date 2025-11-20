@@ -16,19 +16,19 @@ export default function Page() {
     <>
       <LoadingScreen />
       <div className="min-h-screen bg-black text-white antialiased">
-        <Nav />
-        <main>
-          <Intro />
+      <Nav />
+      <main>
+        <Intro />
           <GlobeSection />
           <Defense />
           <Skills />
-          <Hero />
-          <Features />
-          <Info />
-          <Contact />
-        </main>
-        <Footer />
-      </div>
+        <Hero />
+        <Features />
+        <Info />
+        <Contact />
+      </main>
+      <Footer />
+    </div>
     </>
   );
 }
