@@ -16,19 +16,28 @@ export default function Page() {
     <>
       <LoadingScreen />
       <div className="min-h-screen bg-black text-white antialiased">
-      <Nav />
-      <main>
-        <Intro />
-          <GlobeSection />
-          <Defense />
-          <Skills />
-        <Hero />
-        <Features />
-        <Info />
-        <Contact />
-      </main>
-      <Footer />
-    </div>
+        <Nav />
+        <main>
+          <Intro />
+
+          {/* Dark Horizon Glow Background for lower sections */}
+          <div
+            className="relative w-full"
+            style={{
+              background: "radial-gradient(125% 125% at 50% 10%, #000000 40%, #0d1a36 100%)",
+            }}
+          >
+            <GlobeSection />
+            <Defense />
+            <Skills />
+            <Hero />
+            <Features />
+            <Info />
+            <Contact />
+          </div>
+        </main>
+        <Footer />
+      </div>
     </>
   );
 }

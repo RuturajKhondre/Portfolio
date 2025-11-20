@@ -32,17 +32,17 @@ export default function SkillsPage() {
   return (
     <div className="min-h-screen bg-black text-white relative">
       {/* Navigation */}
-      <div className="relative z-10">
+      <div className="relative z-50">
         <Nav />
       </div>
 
       {/* Header with Meteors - Full Width */}
       <div className="relative flex w-full flex-col items-center justify-center overflow-hidden pt-20 sm:pt-24 md:pt-28 lg:pt-32 pb-16 sm:pb-20 md:pb-24 lg:pb-32 mb-8 sm:mb-12 md:mb-16">
         <Meteors number={30} />
-        
+
         {/* Gradient fade at bottom for seamless blend */}
         <div className="absolute bottom-0 left-0 right-0 h-32 sm:h-40 bg-gradient-to-t from-black via-black/70 to-transparent pointer-events-none z-20"></div>
-        
+
         <BlurFade delay={0.2} inView>
           <div className="relative z-10 flex flex-col items-center justify-center text-center px-4 sm:px-6 md:px-8">
             <h1 className="pointer-events-none bg-gradient-to-b from-white to-slate-900/10 bg-clip-text text-center text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold leading-none whitespace-pre-wrap text-transparent pb-4 sm:pb-5 md:pb-6 overflow-visible">
