@@ -81,13 +81,10 @@ const Defense = () => {
             </BlurFade>
 
             {/* Action Buttons */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 max-w-2xl mx-auto mt-8 sm:mt-10 md:mt-12 px-4">
-                <button className="px-6 sm:px-8 py-3 sm:py-4 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors font-semibold text-sm sm:text-base">
-                    Try For Free
-                </button>
-                <button className="px-6 sm:px-8 py-3 sm:py-4 bg-[#1f1c2e] text-white rounded-lg hover:bg-[#2a2640] transition-colors font-semibold border border-purple-600/30 text-sm sm:text-base">
-                    Get Contact
-                </button>
+            <div className="flex justify-center gap-3 sm:gap-4 max-w-2xl mx-auto mt-8 sm:mt-10 md:mt-12 px-4">
+                <a href="/#contact" className="px-6 sm:px-8 py-3 sm:py-4 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors font-semibold text-sm sm:text-base">
+                    Contact Me
+                </a>
             </div>
         </section>
     );

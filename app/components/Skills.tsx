@@ -52,59 +52,43 @@ const Skills = () => {
 
       <div className="max-w-7xl mx-auto px-6">
         <div className="relative">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {skillCategories.map((category, categoryIndex) => (
-            <BlurFade key={categoryIndex} delay={0.2 + categoryIndex * 0.1} inView>
-              <div
-                className="p-6 border border-[#1f1c2e]/80 rounded-lg bg-gradient-to-br from-purple-900/10 to-transparent hover:from-purple-900/20 transition-all"
-              >
-              <h3 className="text-2xl font-semibold text-white mb-6">
-                {category.title}
-              </h3>
-              <div className="grid grid-cols-2 gap-4">
-                {category.skills.map((skill, skillIndex) => (
-                  <div
-                    key={skillIndex}
-                    className="flex flex-col items-center justify-center p-4 bg-black/30 rounded-lg hover:bg-black/50 transition-all group cursor-pointer"
-                  >
-                    <div
-                      className="text-5xl mb-2 transition-transform group-hover:scale-110"
-                      style={{ color: skill.color }}
-                    >
-                      {skill.emoji}
-                    </div>
-                    <span className="text-sm text-gray-300 group-hover:text-white transition-colors">
-                      {skill.name}
-                    </span>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {skillCategories.map((category, categoryIndex) => (
+              <BlurFade key={categoryIndex} delay={0.2 + categoryIndex * 0.1} inView>
+                <div
+                  className="p-6 border border-[#1f1c2e]/80 rounded-lg bg-gradient-to-br from-purple-900/10 to-transparent hover:from-purple-900/20 transition-all"
+                >
+                  <h3 className="text-2xl font-semibold text-white mb-6">
+                    {category.title}
+                  </h3>
+                  <div className="grid grid-cols-2 gap-4">
+                    {category.skills.map((skill, skillIndex) => (
+                      <div
+                        key={skillIndex}
+                        className="flex flex-col items-center justify-center p-4 bg-black/30 rounded-lg hover:bg-black/50 transition-all group cursor-pointer"
+                      >
+                        <div
+                          className="text-5xl mb-2 transition-transform group-hover:scale-110"
+                          style={{ color: skill.color }}
+                        >
+                          {skill.emoji}
+                        </div>
+                        <span className="text-sm text-gray-300 group-hover:text-white transition-colors">
+                          {skill.name}
+                        </span>
+                      </div>
+                    ))}
                   </div>
-                ))}
-              </div>
-              </div>
-            </BlurFade>
-          ))}
-        </div>
-        <ProgressiveBlur position="bottom" height="20%" />
+                </div>
+              </BlurFade>
+            ))}
+          </div>
+          <ProgressiveBlur position="bottom" height="20%" />
         </div>
 
         {/* Additional Skills Stats */}
-        <div className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-6">
-          <div className="p-6 bg-gradient-to-br from-purple-900/20 to-transparent rounded-lg border border-purple-500/20">
-            <div className="text-4xl font-bold text-purple-400 mb-2">5+</div>
-            <div className="text-gray-400">Years Experience</div>
-          </div>
-          <div className="p-6 bg-gradient-to-br from-purple-900/20 to-transparent rounded-lg border border-purple-500/20">
-            <div className="text-4xl font-bold text-purple-400 mb-2">50+</div>
-            <div className="text-gray-400">Projects Completed</div>
-          </div>
-          <div className="p-6 bg-gradient-to-br from-purple-900/20 to-transparent rounded-lg border border-purple-500/20">
-            <div className="text-4xl font-bold text-purple-400 mb-2">20+</div>
-            <div className="text-gray-400">Technologies</div>
-          </div>
-          <div className="p-6 bg-gradient-to-br from-purple-900/20 to-transparent rounded-lg border border-purple-500/20">
-            <div className="text-4xl font-bold text-purple-400 mb-2">100%</div>
-            <div className="text-gray-400">Client Satisfaction</div>
-          </div>
-        </div>
+        {/* Additional Skills Stats - Removed for fresher portfolio */}
+
       </div>
     </section>
   );

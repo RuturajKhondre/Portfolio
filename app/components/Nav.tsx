@@ -15,10 +15,9 @@ import Image from "next/image";
 export default function Nav() {
   const navItems = [
     { name: "Projects", link: "/projects" },
-    { name: "About", link: "/#features" },
-    { name: "Experience", link: "/#info" },
-    { name: "Testimonials", link: "/#contact" },
     { name: "Skills", link: "/skills" },
+    { name: "Blog", link: "/blog" },
+    { name: "Contact", link: "/#contact" },
   ];
 
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
