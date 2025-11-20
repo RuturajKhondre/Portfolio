@@ -41,8 +41,9 @@ const BentoCard = ({
   cta: string;
 }) => {
   return (
-    <div
+    <Link
       key={name}
+      href={href}
       className={cn(
         "group relative col-span-3 flex flex-col justify-between overflow-hidden rounded-xl",
         // light styles
@@ -55,27 +56,24 @@ const BentoCard = ({
       <div className="overflow-hidden">{background}</div>
       <div className="pointer-events-none z-10 flex transform-gpu flex-col gap-2 p-8 pt-10 transition-all duration-300 group-hover:-translate-y-8">
         {Icon && <Icon className="h-12 w-12 origin-left transform-gpu text-neutral-700 transition-all duration-300 ease-in-out group-hover:scale-90 dark:text-neutral-300" />}
-      <h3 className="text-xl font-semibold text-neutral-700 dark:text-neutral-300">
-        {name}
-      </h3>
-      <p className="max-w-lg text-neutral-400">{description}</p>
-    </div>
+        <h3 className="text-xl font-semibold text-neutral-700 dark:text-neutral-300">
+          {name}
+        </h3>
+        <p className="max-w-lg text-neutral-400">{description}</p>
+      </div>
 
-    <div
-      className={cn(
-        "pointer-events-none absolute bottom-0 flex w-full translate-y-10 transform-gpu flex-row items-center p-4 opacity-0 transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100"
-      )}
-    >
-      <Link 
-        href={href}
-        className="pointer-events-auto inline-flex items-center justify-center rounded-md text-sm font-medium hover:bg-accent hover:text-accent-foreground h-8 px-3 text-gray-700 dark:text-gray-300"
+      <div
+        className={cn(
+          "pointer-events-none absolute bottom-0 flex w-full translate-y-10 transform-gpu flex-row items-center p-4 opacity-0 transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100"
+        )}
       >
-        {cta}
-        <ArrowRightIcon className="ml-2 h-4 w-4" />
-      </Link>
+        <div className="pointer-events-auto inline-flex items-center justify-center rounded-md text-sm font-medium hover:bg-accent hover:text-accent-foreground h-8 px-3 text-gray-700 dark:text-gray-300">
+          {cta}
+          <ArrowRightIcon className="ml-2 h-4 w-4" />
+        </div>
       </div>
       <div className="pointer-events-none absolute inset-0 transform-gpu transition-all duration-300 group-hover:bg-black/[.03] group-hover:dark:bg-neutral-800/10" />
-    </div>
+    </Link>
   );
 };
 

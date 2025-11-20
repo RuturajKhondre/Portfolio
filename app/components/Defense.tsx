@@ -13,7 +13,7 @@ const Defense = () => {
         <section id="defense" className="relative py-12 sm:py-16 md:py-20 text-center bg-black overflow-hidden">
             {/* Bento Grid - Projects, Labs, Skills */}
             <BlurFade delay={0.2} inView>
-                <div className="relative overflow-hidden max-w-7xl mx-auto px-4 sm:px-6">
+                <div className="relative z-30 overflow-hidden max-w-7xl mx-auto px-4 sm:px-6">
                     <BentoGrid className="lg:grid-rows-2">
                         <BentoCard
                             name="Projects"
@@ -70,7 +70,7 @@ const Defense = () => {
             <BlurFade delay={0.8} inView>
                 <div className="max-w-4xl mx-auto mb-12 sm:mb-14 md:mb-16 px-4 sm:px-6">
                     <InteractiveTerminal />
-                
+
                     {/* Command hints */}
                     <div className="mt-4 sm:mt-6 p-3 sm:p-4 bg-gradient-to-r from-black via-gray-900 to-white/10 border border-white/20 rounded-lg">
                         <p className="text-xs sm:text-sm text-gray-300">
