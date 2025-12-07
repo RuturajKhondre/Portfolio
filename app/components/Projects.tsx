@@ -3,51 +3,12 @@
 import React from "react";
 import { BlurFade } from "@/components/ui/blur-fade";
 import Link from "next/link";
-import { IconArrowUpRight, IconBulb } from "@tabler/icons-react";
 import Image from "next/image";
+import { IconArrowUpRight, IconBulb } from "@tabler/icons-react";
 import { AuroraText } from "@/components/ui/aurora-text";
-
-interface Project {
-    id: number;
-    title: string;
-    category: string;
-    image: string;
-    description: string;
-    technologies: string[];
-    github?: string;
-    demo?: string;
-}
+import { projects } from "@/data/projects";
 
 const Projects = () => {
-    const projects: Project[] = [
-        {
-            id: 1,
-            title: "Gender Bias Detection Tool",
-            category: "AI & NLP",
-            image: "/gender-bias.png",
-            description: "Detect and analyze gender bias in text using NLP",
-            technologies: ["Python", "NLP", "React"],
-            github: "https://github.com/RuturajKhondre/gender-bias-tool",
-        },
-        {
-            id: 2,
-            title: "ASL Recognition System",
-            category: "Computer Vision",
-            image: "/asl-recognition.png",
-            description: "Real-time American Sign Language recognition",
-            technologies: ["Python", "OpenCV", "Deep Learning"],
-            github: "https://github.com/RuturajKhondre/ASL-Recognition-Project",
-        },
-        {
-            id: 3,
-            title: "Network Security Scanner",
-            category: "Cybersecurity",
-            image: "/network-security.png",
-            description: "Advanced vulnerability assessment tool",
-            technologies: ["Python", "Networking", "Security"],
-            github: "https://github.com/RuturajKhondre",
-        },
-    ];
 
     return (
         <section id="projects" className="relative py-20 bg-black overflow-hidden">
@@ -65,9 +26,9 @@ const Projects = () => {
 
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-7xl mx-auto">
                     {projects.map((project, index) => (
-                        <BlurFade key={project.id} delay={0.2 + index * 0.1} inView>
+                        <BlurFade key={project.slug} delay={0.2 + index * 0.1} inView>
                             <Link
-                                href={project.github || "#"}
+                                href={`/projects/${project.slug}`}
                                 target="_blank"
                                 className="group relative block rounded-3xl bg-zinc-900/50 border border-zinc-800 overflow-hidden hover:border-zinc-700 transition-colors h-full"
                             >
@@ -85,8 +46,8 @@ const Projects = () => {
                                 {/* Image Container */}
                                 <div className="relative w-full aspect-[16/10] mt-2">
                                     <Image
-                                        src={project.image}
-                                        alt={`${project.title} - ${project.description}`}
+                                        src={project.coverImage}
+                                        alt={`${project.title} - ${project.subtitle}`}
                                         fill
                                         className="object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-500"
                                     />
@@ -99,7 +60,7 @@ const Projects = () => {
                                             {project.title}
                                         </h3>
                                         <p className="text-zinc-400 text-sm md:text-base line-clamp-2">
-                                            {project.description}
+                                            {project.subtitle}
                                         </p>
                                     </div>
                                 </div>

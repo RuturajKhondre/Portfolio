@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { Globe } from "@/components/ui/globe";
+import Globe from "@/components/ui/globe";
 import { AnimatedList } from "@/components/ui/animated-list";
 import { cn } from "@/lib/utils";
 import { FaGithub, FaLinkedin, FaInstagram } from "react-icons/fa";
@@ -89,7 +89,7 @@ export default function GlobeSection() {
                 <FaMapMarkerAlt className="text-white text-base sm:text-lg" />
                 <span className="text-white text-base sm:text-lg font-medium">Kolhapur, India</span>
               </div>
-              
+
               {/* Globe - Showing top half only with gradient fade at bottom */}
               <div className="relative w-full h-[250px] sm:h-[300px] md:h-[350px] px-4 sm:px-6 md:px-8">
                 <div className="absolute -bottom-[100px] sm:-bottom-[125px] md:-bottom-[150px] left-1/2 -translate-x-1/2 w-[350px] sm:w-[425px] md:w-[500px] h-[350px] sm:h-[425px] md:h-[500px]">
@@ -111,7 +111,7 @@ export default function GlobeSection() {
                   Connect
                 </h2>
               </div>
-              
+
               {/* Social Links with Animation - Responsive height container */}
               <div className="relative h-[220px] sm:h-[260px] md:h-[300px] px-4 sm:px-6 md:px-8 overflow-hidden">
                 <AnimatedList delay={1500}>

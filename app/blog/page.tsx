@@ -1,95 +1,91 @@
-"use client";
-
-import React from "react";
+import { getAllPosts } from "@/lib/blog";
 import Link from "next/link";
+import Image from "next/image";
 import { BlurFade } from "@/components/ui/blur-fade";
-import { Meteors } from "@/components/ui/meteors";
-import Nav from "../components/Nav";
+import { AuroraText } from "@/components/ui/aurora-text";
+import { IconCalendar, IconUser, IconArrowRight } from "@tabler/icons-react";
+
+export const metadata = {
+    title: "Blog | Ruturaj Khondre",
+    description: "Insights on Cybersecurity, AI, and Network Engineering.",
+};
 
 export default function BlogPage() {
-    const posts = [
-        {
-            title: "Getting Started with Cyber Security",
-            excerpt: "My journey into the world of ethical hacking and what I've learned so far.",
-            date: "Nov 20, 2025",
-            readTime: "5 min read",
-            slug: "getting-started-cyber-security",
-            tags: ["Cyber Security", "Career"],
-        },
-        {
-            title: "Understanding Network Protocols",
-            excerpt: "A deep dive into TCP/IP, UDP, and how the internet actually works.",
-            date: "Nov 15, 2025",
-            readTime: "8 min read",
-            slug: "network-protocols",
-            tags: ["Networking", "Education"],
-        },
-        {
-            title: "My First CTF Experience",
-            excerpt: "Walkthrough of the challenges I solved in my first Capture The Flag competition.",
-            date: "Nov 10, 2025",
-            readTime: "10 min read",
-            slug: "first-ctf-experience",
-            tags: ["CTF", "Writeup"],
-        },
-    ];
+    const posts = getAllPosts();
 
     return (
-        <div className="min-h-screen bg-black text-white relative">
-            {/* Navigation */}
-            <div className="relative z-50">
-                <Nav />
-            </div>
+        <section className="relative min-h-screen pt-32 pb-20 bg-black overflow-hidden">
+            {/* Background Elements */}
+            <div className="absolute top-0 left-0 w-full h-96 bg-gradient-to-b from-purple-900/20 to-transparent pointer-events-none" />
 
-            {/* Header with Meteors - Full Width */}
-            <div className="relative flex w-full flex-col items-center justify-center overflow-hidden pt-20 sm:pt-24 md:pt-28 lg:pt-32 pb-16 sm:pb-20 md:pb-24 lg:pb-32 mb-8 sm:mb-12 md:mb-16">
-                <Meteors number={30} />
-
-                {/* Gradient fade at bottom for seamless blend */}
-                <div className="absolute bottom-0 left-0 right-0 h-32 sm:h-40 bg-gradient-to-t from-black via-black/70 to-transparent pointer-events-none z-20"></div>
-
-                <BlurFade delay={0.2} inView>
-                    <div className="relative z-10 flex flex-col items-center justify-center text-center px-4 sm:px-6 md:px-8">
-                        <h1 className="pointer-events-none bg-gradient-to-b from-white to-slate-900/10 bg-clip-text text-center text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold leading-none whitespace-pre-wrap text-transparent pb-4 sm:pb-5 md:pb-6 overflow-visible">
-                            Blog & <span className="text-purple-400">Writeups</span>
+            <div className="max-w-6xl mx-auto px-6 relative z-10">
+                <div className="mb-16 text-center">
+                    <BlurFade delay={0.1} inView>
+                        <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">
+                            Security <AuroraText colors={["#FF1CF7", "#b249f8", "#7928ca"]} speed={1.5}>Insights</AuroraText>
                         </h1>
-                        <p className="text-sm sm:text-base md:text-lg text-gray-400 flex flex-wrap items-center justify-center gap-2 mt-1 sm:mt-2">
-                            Sharing my learning journey, CTF writeups, and thoughts on security.
+                        <p className="text-gray-400 text-lg md:text-xl max-w-2xl mx-auto">
+                            Exploring the intersection of Artificial Intelligence, Cybersecurity, and Network Engineering.
                         </p>
-                    </div>
-                </BlurFade>
-            </div>
+                    </BlurFade>
+                </div>
 
-            {/* Content */}
-            <div className="container mx-auto px-4 sm:px-6 pb-12 sm:pb-16 md:pb-20 relative z-10">
-                <div className="max-w-4xl mx-auto grid gap-8">
-                    {posts.map((post, idx) => (
-                        <BlurFade key={idx} delay={0.4 + idx * 0.1} inView>
-                            <div className="group relative border border-white/10 bg-white/5 rounded-xl p-6 hover:bg-white/10 transition-colors">
-                                <div className="flex justify-between items-start mb-4">
-                                    <div className="flex gap-2">
-                                        {post.tags.map((tag) => (
-                                            <span key={tag} className="text-xs font-medium px-2 py-1 rounded-full bg-purple-500/20 text-purple-300">
-                                                {tag}
-                                            </span>
-                                        ))}
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    {posts.map((post, index) => (
+                        <BlurFade key={post.slug} delay={0.2 + index * 0.1} inView>
+                            <Link href={`/blog/${post.slug}`} className="group block h-full">
+                                <div className="relative h-full bg-zinc-900/40 border border-zinc-800 rounded-2xl overflow-hidden hover:border-purple-500/50 transition-all duration-300 hover:shadow-[0_0_30px_rgba(168,85,247,0.15)] flex flex-col">
+
+                                    {/* Image Container */}
+                                    <div className="relative h-48 w-full overflow-hidden">
+                                        {post.coverImage ? (
+                                            <Image
+                                                src={post.coverImage}
+                                                alt={post.title}
+                                                fill
+                                                className="object-cover transition-transform duration-500 group-hover:scale-105"
+                                            />
+                                        ) : (
+                                            <div className="w-full h-full bg-zinc-800 flex items-center justify-center">
+                                                <span className="text-zinc-600">No Image</span>
+                                            </div>
+                                        )}
+                                        <div className="absolute inset-0 bg-gradient-to-t from-zinc-900 via-transparent to-transparent opacity-80" />
                                     </div>
-                                    <span className="text-sm text-gray-500">{post.date} • {post.readTime}</span>
+
+                                    {/* Content */}
+                                    <div className="p-6 flex flex-col flex-grow">
+                                        <div className="flex items-center gap-4 text-xs text-zinc-400 mb-4">
+                                            <div className="flex items-center gap-1">
+                                                <IconCalendar className="w-4 h-4" />
+                                                <span>{post.date}</span>
+                                            </div>
+                                            <div className="flex items-center gap-1">
+                                                <IconUser className="w-4 h-4" />
+                                                <span>{post.author}</span>
+                                            </div>
+                                        </div>
+
+                                        <h2 className="text-xl font-bold text-white mb-3 group-hover:text-purple-400 transition-colors line-clamp-2">
+                                            {post.title}
+                                        </h2>
+
+                                        <p className="text-zinc-400 text-sm mb-6 line-clamp-3 flex-grow">
+                                            {post.excerpt}
+                                        </p>
+
+                                        <div className="mt-auto">
+                                            <span className="inline-flex items-center text-sm font-medium text-purple-400 group-hover:text-purple-300 transition-colors">
+                                                Read Article <IconArrowRight className="w-4 h-4 ml-1 transition-transform group-hover:translate-x-1" />
+                                            </span>
+                                        </div>
+                                    </div>
                                 </div>
-                                <h2 className="text-2xl font-bold mb-2 group-hover:text-purple-400 transition-colors">
-                                    {post.title}
-                                </h2>
-                                <p className="text-gray-400 mb-4">
-                                    {post.excerpt}
-                                </p>
-                                <Link href={`/blog/${post.slug}`} className="text-purple-400 hover:text-purple-300 font-medium inline-flex items-center gap-2">
-                                    Read Article →
-                                </Link>
-                            </div>
+                            </Link>
                         </BlurFade>
                     ))}
                 </div>
             </div>
-        </div>
+        </section>
     );
 }

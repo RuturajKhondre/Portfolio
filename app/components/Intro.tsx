@@ -24,7 +24,7 @@ export default function Intro() {
       {/* Gradient fade at bottom for seamless blend */}
       <div className="absolute bottom-0 left-0 right-0 h-32 sm:h-48 md:h-64 bg-gradient-to-t from-black via-black/70 to-transparent pointer-events-none z-20"></div>
 
-      <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 md:px-8 py-12 sm:py-16 md:py-20 pt-24 sm:pt-32 md:pt-48">
+      <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 md:px-8 py-12 sm:py-16 md:py-20 pt-20 sm:pt-32 md:pt-48">
         <div>
           {/* Main heading with inline word rotation */}
           <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold leading-tight pb-8 sm:pb-10 md:pb-12 mb-0">

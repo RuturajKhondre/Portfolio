@@ -2,12 +2,10 @@
 
 import React, { useState, useRef, useEffect, KeyboardEvent } from "react";
 import { cn } from "@/lib/utils";
+import { useTerminal } from "@/hooks/useTerminal";
 import { ProgressiveBlur } from "./progressive-blur";
 
-interface TerminalLine {
-  type: "command" | "output" | "error";
-  content: string;
-}
+
 
 interface InteractiveTerminalProps {
   className?: string;
@@ -15,127 +13,15 @@ interface InteractiveTerminalProps {
 }
 
 export function InteractiveTerminal({ className, onNavigate }: InteractiveTerminalProps) {
-  const [lines, setLines] = useState<TerminalLine[]>([
-    { type: "output", content: "Welcome to CyberSec Terminal v1.0" },
-    { type: "output", content: "Type 'help' for available commands" },
-    { type: "output", content: "" },
-  ]);
+  const { lines, execute, commandHistory, historyIndex, setHistoryIndex } = useTerminal(onNavigate);
   const [currentInput, setCurrentInput] = useState("");
-  const [commandHistory, setCommandHistory] = useState<string[]>([]);
-  const [historyIndex, setHistoryIndex] = useState(-1);
   const inputRef = useRef<HTMLInputElement>(null);
   const terminalRef = useRef<HTMLDivElement>(null);
 
-  // Available commands and sections
-  const sections = {
-    home: "hero",
-    about: "features",
-    project: "defense",
-    labs: "info",
-    skills: "skills",
-    contact: "contact",
-  };
-
-  const commands: Record<string, (args: string[]) => void> = {
-    help: () => {
-      addOutput([
-        "Available commands:",
-        "  cd <section>    - Navigate to a section (home, about, project, labs, skills, contact)",
-        "  ls              - List all available sections",
-        "  clear           - Clear terminal screen",
-        "  whoami          - Display current user info",
-        "  status          - Show system security status",
-        "  help            - Show this help message",
-      ]);
-    },
-    ls: () => {
-      addOutput([
-        "Available sections:",
-        ...Object.keys(sections).map(s => `  📁 ${s}`),
-      ]);
-    },
-    cd: (args: string[]) => {
-      if (args.length === 0) {
-        addError("Usage: cd <section>");
-        return;
-      }
-      const section = args[0].toLowerCase();
-      if (section in sections) {
-        addOutput([`Navigating to ${section}...`]);
-        setTimeout(() => {
-          const element = document.getElementById(sections[section as keyof typeof sections]);
-          if (element) {
-            element.scrollIntoView({ behavior: "smooth", block: "start" });
-          }
-          if (onNavigate) {
-            onNavigate(section);
-          }
-        }, 300);
-      } else {
-        addError(`Section '${section}' not found. Type 'ls' to see available sections.`);
-      }
-    },
-    clear: () => {
-      setLines([]);
-    },
-    whoami: () => {
-      addOutput([
-        "User: Security Administrator",
-        "Role: System Monitor",
-        "Clearance: Level 5",
-      ]);
-    },
-    status: () => {
-      addOutput([
-        "🛡️  System Security Status:",
-        "  ✔ Firewall: Active",
-        "  ✔ Antivirus: Running", 
-        "  ✔ Encryption: Enabled",
-        "  ✔ Threats Blocked: 1,247",
-        "  ✔ Uptime: 99.99%",
-      ]);
-    },
-  };
-
-  const addOutput = (content: string[]) => {
-    setLines(prev => [
-      ...prev,
-      ...content.map(c => ({ type: "output" as const, content: c })),
-    ]);
-  };
-
-  const addError = (content: string) => {
-    setLines(prev => [...prev, { type: "error", content }]);
-  };
-
-  const handleCommand = (input: string) => {
-    const trimmedInput = input.trim();
-    if (!trimmedInput) return;
-
-    // Add command to history
-    setCommandHistory(prev => [...prev, trimmedInput]);
-    setHistoryIndex(-1);
-
-    // Add command to terminal
-    setLines(prev => [...prev, { type: "command", content: `$ ${trimmedInput}` }]);
-
-    // Parse and execute command
-    const parts = trimmedInput.split(" ");
-    const cmd = parts[0].toLowerCase();
-    const args = parts.slice(1);
-
-    if (cmd in commands) {
-      commands[cmd](args);
-    } else {
-      addError(`Command not found: ${cmd}. Type 'help' for available commands.`);
-    }
-
-    setCurrentInput("");
-  };
-
   const handleKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Enter") {
-      handleCommand(currentInput);
+      execute(currentInput);
+      setCurrentInput("");
     } else if (e.key === "ArrowUp") {
       e.preventDefault();
       if (commandHistory.length > 0) {
@@ -154,14 +40,6 @@ export function InteractiveTerminal({ className, onNavigate }: InteractiveTermin
           setHistoryIndex(newIndex);
           setCurrentInput(commandHistory[newIndex]);
         }
-      }
-    } else if (e.key === "Tab") {
-      e.preventDefault();
-      // Auto-complete logic
-      const availableCommands = Object.keys(commands);
-      const matches = availableCommands.filter(cmd => cmd.startsWith(currentInput.toLowerCase()));
-      if (matches.length === 1) {
-        setCurrentInput(matches[0]);
       }
     }
   };
