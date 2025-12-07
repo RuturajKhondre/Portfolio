@@ -5,6 +5,8 @@ import GlobeSection from "./components/GlobeSection";
 import Footer from "./components/Footer";
 import Defense from "./components/Defense";
 import Skills from "./components/Skills";
+import Projects from "./components/Projects";
+import Labs from "./components/Labs";
 import Contact from "./components/Contact";
 import LoadingScreen from "./components/LoadingScreen";
 
@@ -27,6 +29,8 @@ export default function Page() {
             <GlobeSection />
             <Defense />
             <Skills />
+            <Projects />
+            <Labs />
             <Contact />
           </div>
         </main>

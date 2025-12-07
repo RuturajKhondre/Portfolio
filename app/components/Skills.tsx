@@ -3,41 +3,71 @@
 import React from "react";
 import { ProgressiveBlur } from "@/components/ui/progressive-blur";
 import { BlurFade } from "@/components/ui/blur-fade";
+import { HoverEffect } from "@/components/ui/card-hover-effect";
+// Fallback icons if lucide-react is not installed, using text emojis or radix icons
+import { CodeIcon as RadixCode, RocketIcon, GlobeIcon } from "@radix-ui/react-icons";
 
 const Skills = () => {
   const skillCategories = [
     {
       title: "Frontend Development",
+      icon: <RadixCode className="w-6 h-6 text-blue-400" />,
       skills: [
         { name: "React", emoji: "⚛️", color: "#61DAFB" },
         { name: "Next.js", emoji: "▲", color: "#FFFFFF" },
         { name: "TypeScript", emoji: "📘", color: "#3178C6" },
         { name: "JavaScript", emoji: "📜", color: "#F7DF1E" },
+        { name: "Tailwind", emoji: "🎨", color: "#38B2AC" },
       ],
     },
     {
       title: "Backend & DevOps",
+      icon: <RocketIcon className="w-6 h-6 text-green-400" />,
       skills: [
         { name: "Node.js", emoji: "🟢", color: "#339933" },
         { name: "Python", emoji: "🐍", color: "#3776AB" },
         { name: "Docker", emoji: "🐳", color: "#2496ED" },
         { name: "Kubernetes", emoji: "☸️", color: "#326CE5" },
+        { name: "PostgreSQL", emoji: "🐘", color: "#336791" },
       ],
     },
     {
       title: "Cloud & Infrastructure",
+      icon: <GlobeIcon className="w-6 h-6 text-orange-400" />,
       skills: [
         { name: "AWS", emoji: "☁️", color: "#FF9900" },
         { name: "Terraform", emoji: "🏗️", color: "#7B42BC" },
         { name: "Linux", emoji: "🐧", color: "#FCC624" },
         { name: "Git", emoji: "📦", color: "#F05032" },
+        { name: "CI/CD", emoji: "🔄", color: "#4B5563" },
       ],
     },
   ];
 
+  const hoverItems = skillCategories.map((category) => ({
+    title: category.title,
+    icon: category.icon,
+    description: (
+      <div className="mt-4">
+        <div className="flex flex-wrap gap-3">
+          {category.skills.map((skill, idx) => (
+            <div
+              key={idx}
+              className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-zinc-900/50 border border-zinc-800 hover:border-zinc-600 transition-colors group/skill"
+            >
+              <span className="text-lg transition-transform group-hover/skill:scale-110" style={{ color: skill.color }}>{skill.emoji}</span>
+              <span className="text-sm text-zinc-300 group-hover/skill:text-white transition-colors">{skill.name}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+    ),
+    link: "#", // Optional link
+  }));
+
   return (
     <section id="skills" className="relative py-20 text-center bg-black overflow-hidden">
-      <div className="relative z-20 mb-12">
+      <div className="relative z-20 mb-8">
         <BlurFade delay={0.2} inView>
           <h1 className="text-5xl md:text-6xl font-bold text-white">
             Technical <span className="text-purple-400">Skills</span>
@@ -51,47 +81,14 @@ const Skills = () => {
       </div>
 
       <div className="max-w-7xl mx-auto px-6">
-        <div className="relative">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {skillCategories.map((category, categoryIndex) => (
-              <BlurFade key={categoryIndex} delay={0.2 + categoryIndex * 0.1} inView>
-                <div
-                  className="p-6 border border-[#1f1c2e]/80 rounded-lg bg-gradient-to-br from-purple-900/10 to-transparent hover:from-purple-900/20 transition-all"
-                >
-                  <h3 className="text-2xl font-semibold text-white mb-6">
-                    {category.title}
-                  </h3>
-                  <div className="grid grid-cols-2 gap-4">
-                    {category.skills.map((skill, skillIndex) => (
-                      <div
-                        key={skillIndex}
-                        className="flex flex-col items-center justify-center p-4 bg-black/30 rounded-lg hover:bg-black/50 transition-all group cursor-pointer"
-                      >
-                        <div
-                          className="text-5xl mb-2 transition-transform group-hover:scale-110"
-                          style={{ color: skill.color }}
-                        >
-                          {skill.emoji}
-                        </div>
-                        <span className="text-sm text-gray-300 group-hover:text-white transition-colors">
-                          {skill.name}
-                        </span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </BlurFade>
-            ))}
-          </div>
-          <ProgressiveBlur position="bottom" height="20%" />
-        </div>
-
-        {/* Additional Skills Stats */}
-        {/* Additional Skills Stats - Removed for fresher portfolio */}
-
+        <BlurFade delay={0.6} inView>
+          <HoverEffect items={hoverItems} />
+        </BlurFade>
+        <ProgressiveBlur position="bottom" height="20%" />
       </div>
     </section>
   );
 };
 
 export default Skills;
+

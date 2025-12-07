@@ -11,47 +11,6 @@ import { AuroraText } from "@/components/ui/aurora-text";
 const Defense = () => {
     return (
         <section id="defense" className="relative py-12 sm:py-16 md:py-20 text-center bg-black overflow-hidden">
-            {/* Bento Grid - Projects, Labs, Skills */}
-            <BlurFade delay={0.2} inView>
-                <div className="relative z-30 overflow-hidden max-w-7xl mx-auto px-4 sm:px-6">
-                    <BentoGrid className="lg:grid-rows-2">
-                        <BentoCard
-                            name="Projects"
-                            className="col-span-3 lg:col-span-1"
-                            Icon={FileTextIcon}
-                            description="Explore my portfolio of cybersecurity projects and implementations."
-                            href="/projects"
-                            cta="View Projects"
-                            background={
-                                <div className="absolute inset-0 bg-gradient-to-br from-purple-500/20 via-purple-600/10 to-transparent" />
-                            }
-                        />
-                        <BentoCard
-                            name="Labs"
-                            className="col-span-3 lg:col-span-1"
-                            Icon={RocketIcon}
-                            description="Experimental security tools and research in threat detection and prevention."
-                            href="/labs"
-                            cta="Explore Labs"
-                            background={
-                                <div className="absolute inset-0 bg-gradient-to-br from-blue-500/20 via-blue-600/10 to-transparent" />
-                            }
-                        />
-                        <BentoCard
-                            name="Skills"
-                            className="col-span-3 lg:col-span-1"
-                            Icon={CodeIcon}
-                            description="Technical expertise in modern frameworks, cloud infrastructure, and security tools."
-                            href="/skills"
-                            cta="See Skills"
-                            background={
-                                <div className="absolute inset-0 bg-gradient-to-br from-green-500/20 via-green-600/10 to-transparent" />
-                            }
-                        />
-                    </BentoGrid>
-                </div>
-            </BlurFade>
-
             {/* Interactive Terminal Section - Now Below Cards */}
             <div className="relative z-20 mb-8 sm:mb-10 md:mb-12 -mt-12 sm:-mt-14 md:-mt-16">
                 <BlurFade delay={0.4} inView>

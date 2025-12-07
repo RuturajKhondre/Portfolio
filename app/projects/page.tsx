@@ -23,7 +23,7 @@ export default function ProjectsPage() {
       id: 1,
       title: "Gender Bias Detection Tool",
       description: "A machine learning tool to detect and analyze gender bias in text content using NLP techniques.",
-      image: "/project-placeholder.jpg", // You'll need to add actual project images
+      image: "/gender-bias.png",
       technologies: ["JavaScript", "Machine Learning", "NLP", "React"],
       github: "https://github.com/RuturajKhondre/gender-bias-tool",
     },
@@ -31,7 +31,7 @@ export default function ProjectsPage() {
       id: 2,
       title: "ASL Recognition Project",
       description: "Computer vision system for American Sign Language recognition using deep learning and real-time detection.",
-      image: "/project-placeholder.jpg",
+      image: "/asl-recognition.png",
       technologies: ["Python", "TensorFlow", "OpenCV", "Deep Learning"],
       github: "https://github.com/RuturajKhondre/ASL-Recognition-Project",
     },
@@ -39,7 +39,7 @@ export default function ProjectsPage() {
       id: 3,
       title: "Network Security Scanner",
       description: "Advanced network security scanning tool for vulnerability assessment and threat detection.",
-      image: "/project-placeholder.jpg",
+      image: "/network-security.png",
       technologies: ["Python", "Cybersecurity", "Networking", "Wireshark"],
     },
     {
