@@ -38,22 +38,43 @@ export default function LabsPage() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8 max-w-7xl mx-auto">
           <BlurFade delay={0.6} inView>
             <div className="p-4 sm:p-5 md:p-6 rounded-xl sm:rounded-2xl border border-gray-800 bg-black/20 backdrop-blur-sm hover:border-blue-500/50 transition-colors">
-              <h3 className="text-xl sm:text-2xl font-bold mb-3 sm:mb-4 text-blue-400">Lab 1</h3>
-              <p className="text-sm sm:text-base text-gray-400">Description of your first lab experiment...</p>
+              <h3 className="text-xl sm:text-2xl font-bold mb-3 sm:mb-4 text-blue-400">Threat Detection Engine</h3>
+              <p className="text-sm sm:text-base text-gray-400 mb-4">Advanced AI-powered threat detection system leveraging machine learning algorithms to identify and analyze security vulnerabilities in real-time. Features automated scanning, pattern recognition, and predictive analytics.</p>
+              <div className="flex flex-wrap gap-2 mt-4">
+                {["Python", "TensorFlow", "Scikit-learn", "Flask", "Docker"].map((tech) => (
+                  <span key={tech} className="px-3 py-1 text-xs font-medium bg-blue-500/10 text-blue-400 border border-blue-500/30 rounded-full">
+                    {tech}
+                  </span>
+                ))}
+              </div>
             </div>
           </BlurFade>
 
           <BlurFade delay={0.7} inView>
-            <div className="p-4 sm:p-5 md:p-6 rounded-xl sm:rounded-2xl border border-gray-800 bg-black/20 backdrop-blur-sm hover:border-blue-500/50 transition-colors">
-              <h3 className="text-xl sm:text-2xl font-bold mb-3 sm:mb-4 text-blue-400">Lab 2</h3>
-              <p className="text-sm sm:text-base text-gray-400">Description of your second lab experiment...</p>
+            <div className="p-4 sm:p-5 md:p-6 rounded-xl sm:rounded-2xl border border-gray-800 bg-black/20 backdrop-blur-sm hover:border-green-500/50 transition-colors">
+              <h3 className="text-xl sm:text-2xl font-bold mb-3 sm:mb-4 text-green-400">Malware Analysis Tool</h3>
+              <p className="text-sm sm:text-base text-gray-400 mb-4">Isolated sandbox environment for safe malware analysis and reverse engineering. Provides detailed behavioral analysis, memory dumps, and network traffic monitoring for comprehensive threat assessment.</p>
+              <div className="flex flex-wrap gap-2 mt-4">
+                {["Python", "Volatility", "Wireshark", "Linux", "Assembly"].map((tech) => (
+                  <span key={tech} className="px-3 py-1 text-xs font-medium bg-green-500/10 text-green-400 border border-green-500/30 rounded-full">
+                    {tech}
+                  </span>
+                ))}
+              </div>
             </div>
           </BlurFade>
 
           <BlurFade delay={0.8} inView>
-            <div className="p-4 sm:p-5 md:p-6 rounded-xl sm:rounded-2xl border border-gray-800 bg-black/20 backdrop-blur-sm hover:border-blue-500/50 transition-colors">
-              <h3 className="text-xl sm:text-2xl font-bold mb-3 sm:mb-4 text-blue-400">Lab 3</h3>
-              <p className="text-sm sm:text-base text-gray-400">Description of your third lab experiment...</p>
+            <div className="p-4 sm:p-5 md:p-6 rounded-xl sm:rounded-2xl border border-gray-800 bg-black/20 backdrop-blur-sm hover:border-red-500/50 transition-colors">
+              <h3 className="text-xl sm:text-2xl font-bold mb-3 sm:mb-4 text-red-400">Penetration Testing Suite</h3>
+              <p className="text-sm sm:text-base text-gray-400 mb-4">Comprehensive ethical hacking toolkit for security assessment and vulnerability testing. Includes network scanners, exploit frameworks, and automated penetration testing scripts for identifying system weaknesses.</p>
+              <div className="flex flex-wrap gap-2 mt-4">
+                {["Python", "Metasploit", "Nmap", "Burp Suite", "Kali Linux"].map((tech) => (
+                  <span key={tech} className="px-3 py-1 text-xs font-medium bg-red-500/10 text-red-400 border border-red-500/30 rounded-full">
+                    {tech}
+                  </span>
+                ))}
+              </div>
             </div>
           </BlurFade>
         </div>

@@ -33,7 +33,7 @@ export function AuroraText({
       `}</style>
       <span
         className={cn(
-          "relative inline-block bg-clip-text text-transparent",
+          "relative inline-block bg-clip-text text-transparent overflow-visible pb-1",
           className
         )}
         style={{

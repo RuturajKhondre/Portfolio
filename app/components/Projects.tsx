@@ -5,6 +5,7 @@ import { BlurFade } from "@/components/ui/blur-fade";
 import Link from "next/link";
 import { IconArrowUpRight, IconBulb } from "@tabler/icons-react";
 import Image from "next/image";
+import { AuroraText } from "@/components/ui/aurora-text";
 
 interface Project {
     id: number;
@@ -51,12 +52,16 @@ const Projects = () => {
     return (
         <section id="projects" className="relative py-20 bg-black overflow-hidden">
             <div className="max-w-7xl mx-auto px-6 relative z-10">
-                <BlurFade delay={0.2} inView>
-                    <h2 className="text-4xl md:text-5xl font-bold text-white">
-                        Selected Projects
-                    </h2>
-                </BlurFade>
-
+                <div className="mb-16 text-center">
+                    <BlurFade delay={0.2} inView>
+                        <h2 className="text-4xl md:text-5xl font-bold text-white pb-2 leading-normal relative z-10 overflow-visible">
+                            Selected <AuroraText colors={["#a855f7", "#ffffff", "#c084fc", "#faf5ff"]} speed={1.5}>Projects</AuroraText>
+                        </h2>
+                        <p className="text-gray-400 text-lg mt-4 relative z-0">
+                            Showcasing my work in AI, Machine Learning, and Cybersecurity
+                        </p>
+                    </BlurFade>
+                </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-7xl mx-auto">
                     {projects.map((project, index) => (
@@ -81,7 +86,7 @@ const Projects = () => {
                                 <div className="relative w-full aspect-[16/10] mt-2">
                                     <Image
                                         src={project.image}
-                                        alt={project.title}
+                                        alt={`${project.title} - ${project.description}`}
                                         fill
                                         className="object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-500"
                                     />
@@ -108,11 +113,11 @@ const Projects = () => {
                         href="/projects"
                         className="inline-flex items-center gap-2 px-8 py-3 bg-zinc-900 hover:bg-zinc-800 border border-zinc-800 rounded-full text-white font-medium transition-all"
                     >
-                        See all project
+                        See all projects
                     </Link>
                 </div>
-            </div>
-        </section>
+            </div >
+        </section >
     );
 };
 

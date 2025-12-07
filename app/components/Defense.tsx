@@ -39,12 +39,6 @@ const Defense = () => {
                 </div>
             </BlurFade>
 
-            {/* Action Buttons */}
-            <div className="flex justify-center gap-3 sm:gap-4 max-w-2xl mx-auto mt-8 sm:mt-10 md:mt-12 px-4">
-                <a href="/#contact" className="px-6 sm:px-8 py-3 sm:py-4 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors font-semibold text-sm sm:text-base">
-                    Contact Me
-                </a>
-            </div>
         </section>
     );
 };

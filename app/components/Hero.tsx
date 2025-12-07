@@ -10,11 +10,11 @@ export default function Hero() {
         <div className="absolute top-1/4 z-10 w-[400px] h-[400px] sm:w-[700px] sm:h-[700px] bg-[#0b0961] rounded-full blur-[100px] sm:blur-[140px]" />
       </div>
 
-        <BlurFade delay={0.2} inView>
+      <BlurFade delay={0.2} inView>
         <div className="relative z-30 mt-8 sm:mt-12 mr-3 sm:mr-5">
           <img
             src="/lock.png"
-            alt="Lock Icon"
+            alt="Cybersecurity lock icon with purple glow representing digital security"
             className="w-[180px] sm:w-[250px] md:w-[350px] lg:w-[400px] object-contain drop-shadow-[0_0_40px_rgba(168,85,247,0.9)]"
           />
         </div>
@@ -24,7 +24,7 @@ export default function Hero() {
         <div className="relative z-40 -mt-[80px] sm:-mt-[100px] md:-mt-[120px] lg:-mt-[140px] w-full max-w-[320px] sm:max-w-[600px] md:max-w-[900px] lg:max-w-[1200px] backdrop-filter backdrop-blur-sm shadow-2xl rounded-xl sm:rounded-2xl overflow-hidden">
           <Image
             src="/22sd.png"
-            alt="App Interface"
+            alt="Portfolio showcase featuring AI, machine learning and cybersecurity projects dashboard interface"
             width={1200}
             height={750}
             className="rounded-xl sm:rounded-2xl w-full h-auto"
